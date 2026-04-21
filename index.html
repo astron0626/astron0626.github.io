@@ -28,7 +28,6 @@
         
         html { scroll-behavior: smooth; }
 
-        /* 네비게이션 가독성 설정 */
         #navbar.nav-top .nav-link { color: rgba(255, 255, 255, 0.95); text-shadow: 0 2px 4px rgba(0,0,0,0.8); }
         #navbar.nav-top .logo-text { color: white; text-shadow: 0 2px 10px rgba(0,0,0,0.9); }
         #navbar.nav-top .logo-icon-text { fill: white; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.8)); }
@@ -49,7 +48,6 @@
 
         input, textarea { font-size: 16px !important; } 
 
-        /* 모달 스타일 */
         .modal {
             display: none;
             position: fixed;
@@ -81,7 +79,6 @@
             }
         }
 
-        /* 모바일 환경 탭 스크롤바 숨기기 */
         .scrollbar-hide::-webkit-scrollbar {
             display: none;
         }
@@ -174,15 +171,11 @@
                 <p class="text-gray-500 text-base md:text-xl font-medium break-keep">SIBSC는 실무 중심의 고도화된 금융 및 기술 지원 서비스를 제공합니다.</p>
             </div>
             
-            <!-- 메인 콘텐츠 영역 -->
             <div class="w-full h-[550px] sm:h-[600px] md:h-[650px] relative rounded-[1.5rem] md:rounded-[2rem] overflow-hidden group shadow-2xl" data-aos="fade-up" data-aos-delay="100">
-                <!-- 배경 이미지 -->
-                <img id="display-img" src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-all duration-500 opacity-100 scale-105">
+                <img id="display-img" src="https://images.unsplash.com/photo-1513828583688-c52646db42da?q=80&w=2070&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-all duration-500 opacity-100 scale-105">
                 
-                <!-- 가독성을 위한 상/하단 그라데이션 오버레이 -->
                 <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/20 to-black/90 transition-all duration-500"></div>
 
-                <!-- 탭 버튼 영역 (모바일 세로형 / 데스크톱 가로형) -->
                 <div class="absolute top-4 md:top-8 left-0 right-0 z-20 flex justify-center px-4">
                     <div class="w-full max-w-3xl flex flex-col md:flex-row bg-black/40 backdrop-blur-md border border-white/20 p-1.5 md:p-2 rounded-2xl md:rounded-full shadow-2xl space-y-1.5 md:space-y-0">
                         <button onclick="changeService(0)" class="service-tab active relative w-full md:flex-1 flex items-center justify-center space-x-3 md:space-x-2 px-5 py-3 md:py-3.5 md:px-6 rounded-xl md:rounded-full transition-all duration-300 bg-gradient-to-r from-[#624694] to-[#E57D3B] text-white shadow-md z-10 md:scale-105">
@@ -202,12 +195,11 @@
                     </div>
                 </div>
 
-                <!-- 텍스트 영역 -->
                 <div class="absolute bottom-0 left-0 right-0 p-6 md:p-10 lg:p-12 z-20 flex flex-col justify-end overflow-hidden">
                     <div id="display-content" class="transition-all duration-500 translate-y-0 opacity-100">
                         <h3 id="display-title" class="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-3 md:mb-5 drop-shadow-lg break-keep">공장 및 시설 자금 지원</h3>
                         <p id="display-desc" class="text-gray-200 text-sm md:text-lg leading-relaxed max-w-2xl break-keep drop-shadow-md">
-                            신규 공장 설립, 이전, 시설 도입을 위한 최적의 자금 로드맵을 제시하며,<br class="hidden md:block">
+                            신축 공장 설립, 이전, 시설 도입을 위한 최적의 자금 로드맵을 제시하며,<br class="hidden md:block">
                             <span class="text-orange-400 font-semibold">금리 및 자부담 완화, 취득세 감면 혜택</span> 등을 통해 재무 부담을 최소화합니다.
                         </p>
                     </div>
@@ -217,91 +209,89 @@
     </section>
 
     <section id="contact" class="py-16 md:py-32 bg-gray-50 px-5 md:px-6 break-keep">
-            <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-8 md:gap-12 lg:gap-20">
-                <div class="w-full lg:w-[35%] space-y-4 md:space-y-8" data-aos="fade-right">
-                    <h2 class="text-3xl md:text-5xl font-black tracking-tight leading-tight">상담 신청</h2>
-                    <p class="text-gray-500 text-base md:text-lg font-medium">검증된 전문가와 함께 귀사의 무한한 성장 가능성을 설계하십시오.</p>
-                </div>
-
-                <div class="w-full lg:w-[65%] bg-white p-6 md:p-14 rounded-[2rem] md:rounded-[3rem] shadow-xl md:shadow-2xl border border-gray-100" data-aos="fade-up">
-                    <form id="inquiryForm" class="space-y-5 md:space-y-6">
-                        <div class="grid md:grid-cols-2 gap-5 md:gap-6">
-                            <div class="space-y-1.5 md:space-y-2">
-                                <label class="text-[10px] md:text-xs font-black text-gray-400 tracking-widest ml-1">COMPANY</label>
-                                <input type="text" name="company" required placeholder="회사명" class="w-full px-5 py-3.5 md:px-6 md:py-4.5 bg-gray-50 border border-gray-200 rounded-xl md:rounded-2xl focus:ring-2 focus:ring-orange-500 focus:bg-white outline-none transition-all text-sm md:text-base">
-                            </div>
-                            <div class="space-y-1.5 md:space-y-2">
-                                <label class="text-[10px] md:text-xs font-black text-gray-400 tracking-widest ml-1">BUSINESS NO.</label>
-                                <input type="text" name="bizNo" placeholder="사업자등록번호" class="w-full px-5 py-3.5 md:px-6 md:py-4.5 bg-gray-50 border border-gray-200 rounded-xl md:rounded-2xl focus:ring-2 focus:ring-orange-500 focus:bg-white outline-none transition-all text-sm md:text-base">
-                            </div>
-                        </div>
-                        <div class="space-y-1.5 md:space-y-2">
-                            <label class="text-[10px] md:text-xs font-black text-gray-400 tracking-widest ml-1">PHONE</label>
-                            <input type="tel" name="phone" required placeholder="연락처 (010-0000-0000)" class="w-full px-5 py-3.5 md:px-6 md:py-4.5 bg-gray-50 border border-gray-200 rounded-xl md:rounded-2xl focus:ring-2 focus:ring-orange-500 focus:bg-white outline-none transition-all text-sm md:text-base">
-                        </div>
-                        <div class="space-y-1.5 md:space-y-2">
-                            <label class="text-[10px] md:text-xs font-black text-gray-400 tracking-widest ml-1 break-keep uppercase">INQUIRY</label>
-                            <textarea name="message" rows="4" required placeholder="상담 희망 내용을 간단히 기재해 주세요" class="w-full px-5 py-3.5 md:px-6 md:py-4.5 bg-gray-50 border border-gray-200 rounded-xl md:rounded-2xl focus:ring-2 focus:ring-orange-500 focus:bg-white outline-none transition-all text-sm md:text-base"></textarea>
-                        </div>
-                        <div class="flex items-center space-x-3 p-3.5 md:p-4 bg-gray-50 rounded-xl md:rounded-2xl border border-gray-100">
-                            <input type="checkbox" id="privacy" required class="w-4 h-4 md:w-5 md:h-5 accent-orange-600 rounded">
-                            <label for="privacy" class="text-[11px] md:text-xs text-gray-500 font-medium cursor-pointer leading-snug">
-                                [필수] <span onclick="openModal()" class="underline text-orange-600 font-bold">개인정보 수집 및 활용</span>에 동의합니다.
-                            </label>
-                        </div>
-                        <button type="submit" id="submitBtn" class="w-full gradient-button text-white py-4 md:py-5 rounded-xl md:rounded-2xl font-black text-lg md:text-xl shadow-xl flex items-center justify-center space-x-2 md:space-x-3 transition">
-                            <span>전문가 무료 상담 신청</span>
-                            <i class="fa-solid fa-paper-plane text-xs md:text-sm"></i>
-                        </button>
-                    </form>
-                    <div id="successMsg" class="hidden mt-5 md:mt-6 p-5 md:p-6 bg-green-50 text-green-700 rounded-xl md:rounded-2xl text-center border border-green-100 shadow-inner text-sm md:text-base">
-                        <i class="fa-solid fa-circle-check text-xl md:text-2xl mb-2"></i><br>
-                        정상적으로 접수되었습니다. 담당자가 신속히 연락드리겠습니다.
-                    </div>
-                </div>
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-8 md:gap-12 lg:gap-20">
+            <div class="w-full lg:w-[35%] space-y-4 md:space-y-8" data-aos="fade-right">
+                <h2 class="text-3xl md:text-5xl font-black tracking-tight leading-tight">상담 신청</h2>
+                <p class="text-gray-500 text-base md:text-lg font-medium">검증된 전문가와 함께 귀사의 무한한 성장 가능성을 설계하십시오.</p>
             </div>
-        </section>
 
-        <div id="privacyModal" class="modal">
-            <div class="modal-content">
-                <div class="flex justify-between items-center mb-6">
-                    <h3 class="text-xl font-bold text-gray-900 text-balance">개인정보 수집 및 이용 동의</h3>
-                    <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600 text-3xl font-light">&times;</button>
-                </div>
-                <div class="text-sm text-gray-600 space-y-4 leading-relaxed text-balance">
-                    <p>유한회사 스마트혁신 기업지원센터는 고객님의 상담 신청과 관련하여 아래와 같이 개인정보를 수집·이용합니다.</p>
-                    <div class="bg-gray-50 p-5 rounded-xl border border-gray-100 space-y-2">
-                        <p><strong>• 수집 항목:</strong> 회사명, 사업자등록번호, 연락처, 문의내용</p>
-                        <p><strong>• 수집 및 이용 목적:</strong> 지원사업 상담, 서비스 안내 및 파트너십 관리</p>
-                        <p><strong>• 보유 및 이용 기간:</strong> 상담 완료 및 목적 달성 후 즉시 파기 (단, 법령에 의거 보존 필요 시 해당 기간 보관)</p>
+            <div class="w-full lg:w-[65%] bg-white p-6 md:p-14 rounded-[2rem] md:rounded-[3rem] shadow-xl md:shadow-2xl border border-gray-100" data-aos="fade-up">
+                <form id="inquiryForm" class="space-y-5 md:space-y-6">
+                    <div class="grid md:grid-cols-2 gap-5 md:gap-6">
+                        <div class="space-y-1.5 md:space-y-2">
+                            <label class="text-[10px] md:text-xs font-black text-gray-400 tracking-widest ml-1">COMPANY</label>
+                            <input type="text" name="company" required placeholder="회사명" class="w-full px-5 py-3.5 md:px-6 md:py-4.5 bg-gray-50 border border-gray-200 rounded-xl md:rounded-2xl focus:ring-2 focus:ring-orange-500 focus:bg-white outline-none transition-all text-sm md:text-base">
+                        </div>
+                        <div class="space-y-1.5 md:space-y-2">
+                            <label class="text-[10px] md:text-xs font-black text-gray-400 tracking-widest ml-1">BUSINESS NO.</label>
+                            <input type="text" name="bizNo" placeholder="사업자등록번호" class="w-full px-5 py-3.5 md:px-6 md:py-4.5 bg-gray-50 border border-gray-200 rounded-xl md:rounded-2xl focus:ring-2 focus:ring-orange-500 focus:bg-white outline-none transition-all text-sm md:text-base">
+                        </div>
                     </div>
-                    <p class="text-xs text-gray-400 text-balance">※ 본 동의를 거부하실 권리가 있으나, 거부 시 상담 신청이 제한될 수 있음을 알려드립니다.</p>
+                    <div class="space-y-1.5 md:space-y-2">
+                        <label class="text-[10px] md:text-xs font-black text-gray-400 tracking-widest ml-1">PHONE</label>
+                        <input type="tel" name="phone" required placeholder="연락처 (010-0000-0000)" class="w-full px-5 py-3.5 md:px-6 md:py-4.5 bg-gray-50 border border-gray-200 rounded-xl md:rounded-2xl focus:ring-2 focus:ring-orange-500 focus:bg-white outline-none transition-all text-sm md:text-base">
+                    </div>
+                    <div class="space-y-1.5 md:space-y-2">
+                        <label class="text-[10px] md:text-xs font-black text-gray-400 tracking-widest ml-1 break-keep uppercase">INQUIRY</label>
+                        <textarea name="message" rows="4" required placeholder="상담 희망 내용을 간단히 기재해 주세요" class="w-full px-5 py-3.5 md:px-6 md:py-4.5 bg-gray-50 border border-gray-200 rounded-xl md:rounded-2xl focus:ring-2 focus:ring-orange-500 focus:bg-white outline-none transition-all text-sm md:text-base"></textarea>
+                    </div>
+                    <div class="flex items-center space-x-3 p-3.5 md:p-4 bg-gray-50 rounded-xl md:rounded-2xl border border-gray-100">
+                        <input type="checkbox" id="privacy" required class="w-4 h-4 md:w-5 md:h-5 accent-orange-600 rounded">
+                        <label for="privacy" class="text-[11px] md:text-xs text-gray-500 font-medium cursor-pointer leading-snug">
+                            [필수] <span onclick="openModal()" class="underline text-orange-600 font-bold">개인정보 수집 및 활용</span>에 동의합니다.
+                        </label>
+                    </div>
+                    <button type="submit" id="submitBtn" class="w-full gradient-button text-white py-4 md:py-5 rounded-xl md:rounded-2xl font-black text-lg md:text-xl shadow-xl flex items-center justify-center space-x-2 md:space-x-3 transition">
+                        <span>지금 무료 상담 예약</span>
+                        <i class="fa-solid fa-paper-plane text-xs md:text-sm"></i>
+                    </button>
+                </form>
+                <div id="successMsg" class="hidden mt-5 md:mt-6 p-5 md:p-6 bg-green-50 text-green-700 rounded-xl md:rounded-2xl text-center border border-green-100 shadow-inner text-sm md:text-base">
+                    <i class="fa-solid fa-circle-check text-xl md:text-2xl mb-2"></i><br>
+                    정상적으로 접수되었습니다. 담당자가 신속히 연락드리겠습니다.
                 </div>
-                <button onclick="closeModal()" class="w-full mt-6 md:mt-8 bg-gray-900 text-white py-3.5 md:py-4 rounded-xl font-bold hover:bg-black transition-colors">확인 및 닫기</button>
             </div>
         </div>
+    </section>
 
-        <footer class="bg-gray-950 text-gray-600 py-12 md:py-16 px-5 md:px-6">
-            <div class="max-w-7xl mx-auto">
-                <div class="flex flex-col md:flex-row justify-between items-center gap-6 border-b border-white/5 pb-10 md:pb-12 mb-10 md:mb-12">
+    <div id="privacyModal" class="modal">
+        <div class="modal-content">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-bold text-gray-900 text-balance">개인정보 수집 및 이용 동의</h3>
+                <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600 text-3xl font-light">&times;</button>
+            </div>
+            <div class="text-sm text-gray-600 space-y-4 leading-relaxed text-balance">
+                <p>유한회사 스마트혁신 기업지원센터는 고객님의 상담 신청과 관련하여 아래와 같이 개인정보를 수집·이용합니다.</p>
+                <div class="bg-gray-50 p-5 rounded-xl border border-gray-100 space-y-2">
+                    <p><strong>• 수집 항목:</strong> 회사명, 사업자등록번호, 연락처, 문의내용</p>
+                    <p><strong>• 수집 및 이용 목적:</strong> 지원사업 상담, 서비스 안내 및 파트너십 관리</p>
+                    <p><strong>• 보유 및 이용 기간:</strong> 상담 완료 및 목적 달성 후 즉시 파기 (단, 법령에 의거 보존 필요 시 해당 기간 보관)</p>
                 </div>
-                <div class="flex flex-col md:flex-row justify-between text-[11px] md:text-xs space-y-4 md:space-y-0 opacity-70">
-                    <div class="flex flex-col gap-y-3">
-                        <div class="flex flex-wrap gap-x-6 gap-y-2">
-                            <span class="text-gray-200 font-bold">상호: 유한회사 스마트혁신 기업지원센터</span>
-                            <span>대표: 빈성우</span>
-                            <span>사업자등록번호: 568-87-03144</span>
-                        </div>
-                        <div class="flex flex-wrap gap-x-6 gap-y-2">
-                            <span>주소: 전북특별자치도 전주시 완산구 용머리로 94, 4층 425호 (효자동1가)</span>
-                        </div>
+                <p class="text-xs text-gray-400 text-balance">※ 본 동의를 거부하실 권리가 있으나, 거부 시 상담 신청이 제한될 수 있음을 알려드립니다.</p>
+            </div>
+            <button onclick="closeModal()" class="w-full mt-6 md:mt-8 bg-gray-900 text-white py-3.5 md:py-4 rounded-xl font-bold hover:bg-black transition-colors">확인 및 닫기</button>
+        </div>
+    </div>
+
+    <footer class="bg-gray-950 text-gray-600 py-12 md:py-16 px-5 md:px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between text-[11px] md:text-xs space-y-4 md:space-y-0 opacity-70">
+                <div class="flex flex-col gap-y-3">
+                    <div class="flex flex-wrap gap-x-6 gap-y-2">
+                        <span class="text-gray-200 font-bold">상호: 유한회사 스마트혁신 기업지원센터</span>
+                        <span>대표: 빈성우</span>
+                        <span>사업자등록번호: 568-87-03144</span>
                     </div>
-                    <div class="self-end mt-4 md:mt-0 font-medium">
-                        &copy; 2024 SIBSC. All rights reserved.
+                    <div class="flex flex-wrap gap-x-6 gap-y-2">
+                        <span>주소: 전북특별자치도 전주시 완산구 용머리로 94, 4층 425호 (효자동1가)</span>
                     </div>
+                </div>
+                <div class="self-end mt-4 md:mt-0 font-medium">
+                    &copy; 2024 SIBSC. All rights reserved.
                 </div>
             </div>
-        </footer>
+        </div>
+    </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
@@ -336,8 +326,8 @@
         const servicesData = [
             {
                 title: "공장 및 시설 자금 지원",
-                desc: "신규 공장 설립, 이전, 시설 도입을 위한 최적의 자금 로드맵을 제시하며,<br class='hidden md:block'><span class='text-orange-400 font-semibold'>금리 및 자부담 완화, 취득세 감면 혜택</span> 등을 통해 재무 부담을 최소화합니다.",
-                img: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop"
+                desc: "신축 공장 설립, 이전, 시설 도입을 위한 최적의 자금 로드맵을 제시하며,<br class='hidden md:block'><span class='text-orange-400 font-semibold'>금리 및 자부담 완화, 취득세 감면 혜택</span> 등을 통해 재무 부담을 최소화합니다.",
+                img: "https://images.unsplash.com/photo-1513828583688-c52646db42da?q=80&w=2070&auto=format&fit=crop"
             },
             {
                 title: "정부 지원 사업 매칭",
@@ -346,8 +336,8 @@
             },
             {
                 title: "R&D 및 기술 인증",
-                desc: "기업의 기술 고도화를 위한 연구소 설립을 완벽하게 지원하며,<br class='hidden md:block'><span class='text-orange-400 font-semibold'>벤처, 메인비즈, 이노비즈, ISO</span> 등 핵심 인증 획득으로 기업 가치를 극대화합니다.",
-                img: "https://images.unsplash.com/photo-1507413245164-6160d8298b31?q=80&w=2070&auto=format&fit=crop"
+                desc: "기업의 기술 고도화를 위한 연구소 설립 및 기술 연구원 역량 강화를 전폭적으로 지원하며,<br class='hidden md:block'><span class='text-orange-400 font-semibold'>벤처, 메인비즈, 이노비즈, ISO</span> 등 핵심 인증 획득으로 기업 가치를 극대화합니다.",
+                img: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=2070&auto=format&fit=crop"
             }
         ];
 
