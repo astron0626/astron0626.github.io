@@ -86,6 +86,9 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
+
+        /* 보안: 스팸 봇 방지용 숨김 필드 */
+        .hp-field { display: none !important; visibility: hidden !important; }
     </style>
 </head>
 <body class="bg-white text-gray-900 overflow-x-hidden">
@@ -217,6 +220,11 @@
 
             <div class="w-full lg:w-[65%] bg-white p-6 md:p-14 rounded-[2rem] md:rounded-[3rem] shadow-xl md:shadow-2xl border border-gray-100" data-aos="fade-up">
                 <form id="inquiryForm" class="space-y-5 md:space-y-6">
+                    <!-- 보안: Honeypot 봇 차단 필드 -->
+                    <div class="hp-field">
+                        <input type="text" name="nickname" tabindex="-1" autocomplete="off">
+                    </div>
+
                     <div class="grid md:grid-cols-2 gap-5 md:gap-6">
                         <div class="space-y-1.5 md:space-y-2">
                             <label class="text-[10px] md:text-xs font-black text-gray-400 tracking-widest ml-1">COMPANY</label>
@@ -229,7 +237,7 @@
                     </div>
                     <div class="space-y-1.5 md:space-y-2">
                         <label class="text-[10px] md:text-xs font-black text-gray-400 tracking-widest ml-1">PHONE</label>
-                        <input type="tel" name="phone" required placeholder="연락처 (010-0000-0000)" class="w-full px-5 py-3.5 md:px-6 md:py-4.5 bg-gray-50 border border-gray-200 rounded-xl md:rounded-2xl focus:ring-2 focus:ring-orange-500 focus:bg-white outline-none transition-all text-sm md:text-base">
+                        <input type="tel" name="phone" id="phoneInput" required placeholder="연락처 (010-0000-0000)" class="w-full px-5 py-3.5 md:px-6 md:py-4.5 bg-gray-50 border border-gray-200 rounded-xl md:rounded-2xl focus:ring-2 focus:ring-orange-500 focus:bg-white outline-none transition-all text-sm md:text-base">
                     </div>
                     <div class="space-y-1.5 md:space-y-2">
                         <label class="text-[10px] md:text-xs font-black text-gray-400 tracking-widest ml-1 break-keep uppercase">INQUIRY</label>
@@ -276,15 +284,9 @@
     <footer class="bg-gray-950 text-gray-600 py-12 md:py-16 px-5 md:px-6">
         <div class="max-w-7xl mx-auto">
             <div class="flex flex-col md:flex-row justify-between text-[11px] md:text-xs space-y-4 md:space-y-0 opacity-70">
-                <div class="flex flex-col gap-y-3">
-                    <div class="flex flex-wrap gap-x-6 gap-y-2">
-                        <span class="text-gray-200 font-bold">상호: 유한회사 스마트혁신 기업지원센터</span>
-                        <span>대표: 빈성우</span>
-                        <span>사업자등록번호: 568-87-03144</span>
-                    </div>
-                    <div class="flex flex-wrap gap-x-6 gap-y-2">
-                        <span>주소: 전북특별자치도 전주시 완산구 용머리로 94, 4층 425호 (효자동1가)</span>
-                    </div>
+                <div class="flex flex-col gap-y-3" id="footer-obf-area">
+                    <!-- 보안: 정보 난독화 영역 -->
+                    <p class="animate-pulse">Loading contact info...</p>
                 </div>
                 <div class="self-end mt-4 md:mt-0 font-medium">
                     &copy; 2024 SIBSC. All rights reserved.
@@ -296,6 +298,27 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ once: true, offset: 50, duration: 800 });
+
+        // 1. 보안: 정보 난독화 (푸터 정보 봇 수집 방지)
+        function loadFooterInfo() {
+            const data = {
+                c: "상호: 유한회사 스마트혁신 기업지원센터",
+                r: "대표: 빈성우",
+                n: "사업자등록번호: 568-87-03144",
+                a: "주소: 전북특별자치도 전주시 완산구 용머리로 94, 4층 425호 (효자동1가)"
+            };
+            document.getElementById('footer-obf-area').innerHTML = `
+                <div class="flex flex-wrap gap-x-6 gap-y-2">
+                    <span class="text-gray-200 font-bold">${data.c}</span>
+                    <span>${data.r}</span>
+                    <span>${data.n}</span>
+                </div>
+                <div class="flex flex-wrap gap-x-6 gap-y-2">
+                    <span>${data.a}</span>
+                </div>
+            `;
+        }
+        loadFooterInfo();
 
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
@@ -393,24 +416,40 @@
 
         startAutoSlide();
 
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbznu17HDqqbZDzZZRcsEsve71fHtmLLkUBfgUJzRouSUtXTS_i6irWJo7kKuxR4Mfo/exec'; 
+        // 2. 보안: 전송 로직 (최신 배포 주소 및 난독화 적용)
+        const p1 = 'https://script.google.com/macros/s/'; 
+        const p2 = 'AKfycbxQd_FBvMkgKyydNjquiIF6Ct6cCGPri5_ycfxxR2FwFIdIt-ICIXaTQlNtTkqbaxM'; // 사용자 최신 배포 키
+        const scriptURL = p1 + p2 + '/exec';
+
         const form = document.getElementById('inquiryForm');
         const btn = document.getElementById('submitBtn');
         const success = document.getElementById('successMsg');
 
         form.addEventListener('submit', e => {
             e.preventDefault();
+
+            // 보안: 허니팟 체크 (값이 채워져 있으면 봇으로 간주)
+            if (form.nickname.value !== "") return;
+
+            // 보안: 전화번호 형식 검증
+            const phone = document.getElementById('phoneInput').value;
+            if (!/^[0-9-]{9,15}$/.test(phone)) {
+                alert("올바른 연락처 형식을 입력해주세요.");
+                return;
+            }
+
             btn.disabled = true;
             const originalBtnContent = btn.innerHTML;
             btn.innerHTML = '<i class="fa-solid fa-spinner animate-spin"></i> <span>정보를 안전하게 전송 중...</span>';
 
-            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: new FormData(form)})
                 .then(response => {
                     success.classList.remove('hidden');
                     form.reset();
                     btn.classList.add('hidden');
                 })
                 .catch(error => {
+                    console.error('Error!', error.message);
                     btn.disabled = false;
                     btn.innerHTML = originalBtnContent;
                     alert('전송 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.');
