@@ -195,34 +195,66 @@
                 <p class="text-gray-500 text-base md:text-xl font-medium break-keep">SIBSC는 실무 중심의 고도화된 금융 및 기술 지원 서비스를 제공합니다.</p>
             </div>
             
-            <div class="w-full h-[480px] sm:h-[560px] md:h-[650px] relative rounded-[1.5rem] md:rounded-[2rem] overflow-hidden group shadow-2xl bg-gray-950" data-aos="fade-up" data-aos-delay="100">
-                <img id="display-img" src="images/s1.jpg" class="absolute inset-0 w-full h-full object-contain md:object-cover md:object-center transition-all duration-500 opacity-100 scale-100 md:scale-105">
+            <!-- 모바일: 카드형 레이아웃 (사진 위, 탭, 텍스트 순서로 분리) -->
+            <div class="md:hidden rounded-[1.5rem] overflow-hidden shadow-2xl bg-gray-950" data-aos="fade-up" data-aos-delay="100">
+                <div class="relative w-full aspect-video">
+                    <img id="display-img-m" src="images/s1.jpg" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-100">
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-950/40 to-transparent"></div>
+                </div>
+
+                <div class="flex overflow-x-auto scrollbar-hide gap-2 px-4 pt-4 pb-1">
+                    <button onclick="changeService(0)" class="service-tab-m active shrink-0 flex items-center space-x-2 px-4 py-2.5 rounded-full transition-all duration-300 bg-gradient-to-r from-[#624694] to-[#E57D3B] text-white whitespace-nowrap">
+                        <i class="fa-solid fa-industry text-xs"></i>
+                        <span class="font-bold text-[13px]">공장 및 시설 자금</span>
+                    </button>
+                    <button onclick="changeService(1)" class="service-tab-m shrink-0 flex items-center space-x-2 px-4 py-2.5 rounded-full transition-all duration-300 bg-white/10 text-white/70 whitespace-nowrap">
+                        <i class="fa-solid fa-file-contract text-xs"></i>
+                        <span class="font-medium text-[13px]">정부 지원 사업</span>
+                    </button>
+                    <button onclick="changeService(2)" class="service-tab-m shrink-0 flex items-center space-x-2 px-4 py-2.5 rounded-full transition-all duration-300 bg-white/10 text-white/70 whitespace-nowrap">
+                        <i class="fa-solid fa-microscope text-xs"></i>
+                        <span class="font-medium text-[13px]">R&D 및 기술 인증</span>
+                    </button>
+                </div>
+
+                <div class="px-5 pt-3 pb-6">
+                    <h3 id="display-title-m" class="text-xl font-bold text-white mb-2 break-keep">공장 및 시설 자금 지원</h3>
+                    <p id="display-desc-m" class="text-gray-300 text-sm leading-relaxed break-keep">
+                        신축 공장 설립, 이전, 시설 도입을 위한 최적의 자금 로드맵을 제시하며,
+                        <span class="text-orange-400 font-semibold">금리 및 자부담 완화, 취득세 감면 혜택</span> 등을 통해 재무 부담을 최소화합니다.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 데스크톱: 기존 오버레이형 레이아웃 -->
+            <div class="hidden md:block w-full md:h-[650px] relative rounded-[2rem] overflow-hidden group shadow-2xl" data-aos="fade-up" data-aos-delay="100">
+                <img id="display-img" src="images/s1.jpg" class="absolute inset-0 w-full h-full object-cover object-center transition-all duration-500 opacity-100 scale-105">
                 
                 <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/20 to-black/90 transition-all duration-500"></div>
 
-                <div class="absolute top-4 md:top-8 left-0 right-0 z-20 flex justify-center px-4">
-                    <div class="w-full max-w-3xl flex flex-col md:flex-row bg-black/40 backdrop-blur-md border border-white/20 p-1.5 md:p-2 rounded-2xl md:rounded-full shadow-2xl space-y-1.5 md:space-y-0">
-                        <button onclick="changeService(0)" class="service-tab active relative w-full md:flex-1 flex items-center justify-center space-x-3 md:space-x-2 px-5 py-3 md:py-3.5 md:px-6 rounded-xl md:rounded-full transition-all duration-300 bg-gradient-to-r from-[#624694] to-[#E57D3B] text-white shadow-md z-10 md:scale-105">
-                            <i class="fa-solid fa-industry text-xs md:text-base"></i>
-                            <span class="tab-title font-bold text-[13px] md:text-base whitespace-nowrap">공장 및 시설 자금</span>
+                <div class="absolute top-8 left-0 right-0 z-20 flex justify-center px-4">
+                    <div class="w-full max-w-3xl flex flex-row bg-black/40 backdrop-blur-md border border-white/20 p-2 rounded-full shadow-2xl">
+                        <button onclick="changeService(0)" class="service-tab active relative flex-1 flex items-center justify-center space-x-2 py-3.5 px-6 rounded-full transition-all duration-300 bg-gradient-to-r from-[#624694] to-[#E57D3B] text-white shadow-md z-10 scale-105">
+                            <i class="fa-solid fa-industry text-base"></i>
+                            <span class="tab-title font-bold text-base whitespace-nowrap">공장 및 시설 자금</span>
                         </button>
                         
-                        <button onclick="changeService(1)" class="service-tab relative w-full md:flex-1 flex items-center justify-center space-x-3 md:space-x-2 px-5 py-3 md:py-3.5 md:px-6 rounded-xl md:rounded-full transition-all duration-300 text-white/70 hover:text-white hover:bg-white/10 whitespace-nowrap">
-                            <i class="fa-solid fa-file-contract text-xs md:text-base"></i>
-                            <span class="tab-title font-medium text-[13px] md:text-base">정부 지원 사업</span>
+                        <button onclick="changeService(1)" class="service-tab relative flex-1 flex items-center justify-center space-x-2 py-3.5 px-6 rounded-full transition-all duration-300 text-white/70 hover:text-white hover:bg-white/10 whitespace-nowrap">
+                            <i class="fa-solid fa-file-contract text-base"></i>
+                            <span class="tab-title font-medium text-base">정부 지원 사업</span>
                         </button>
 
-                        <button onclick="changeService(2)" class="service-tab relative w-full md:flex-1 flex items-center justify-center space-x-3 md:space-x-2 px-5 py-3 md:py-3.5 md:px-6 rounded-xl md:rounded-full transition-all duration-300 text-white/70 hover:text-white hover:bg-white/10 whitespace-nowrap">
-                            <i class="fa-solid fa-microscope text-xs md:text-base"></i>
-                            <span class="tab-title font-medium text-[13px] md:text-base">R&D 및 기술 인증</span>
+                        <button onclick="changeService(2)" class="service-tab relative flex-1 flex items-center justify-center space-x-2 py-3.5 px-6 rounded-full transition-all duration-300 text-white/70 hover:text-white hover:bg-white/10 whitespace-nowrap">
+                            <i class="fa-solid fa-microscope text-base"></i>
+                            <span class="tab-title font-medium text-base">R&D 및 기술 인증</span>
                         </button>
                     </div>
                 </div>
 
-                <div class="absolute bottom-0 left-0 right-0 p-6 md:p-10 lg:p-12 z-20 flex flex-col justify-end overflow-hidden">
+                <div class="absolute bottom-0 left-0 right-0 p-10 lg:p-12 z-20 flex flex-col justify-end overflow-hidden">
                     <div id="display-content" class="transition-all duration-500 translate-y-0 opacity-100">
-                        <h3 id="display-title" class="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-3 md:mb-5 drop-shadow-lg break-keep">공장 및 시설 자금 지원</h3>
-                        <p id="display-desc" class="text-gray-200 text-sm md:text-lg leading-relaxed max-w-2xl break-keep drop-shadow-md">
+                        <h3 id="display-title" class="text-3xl lg:text-4xl font-bold text-white mb-5 drop-shadow-lg break-keep">공장 및 시설 자금 지원</h3>
+                        <p id="display-desc" class="text-gray-200 text-lg leading-relaxed max-w-2xl break-keep drop-shadow-md">
                             신축 공장 설립, 이전, 시설 도입을 위한 최적의 자금 로드맵을 제시하며,<br class="hidden md:block">
                             <span class="text-orange-400 font-semibold">금리 및 자부담 완화, 취득세 감면 혜택</span> 등을 통해 재무 부담을 최소화합니다.
                         </p>
@@ -403,15 +435,26 @@
                 startAutoSlide();
             }
 
+            // 데스크톱 탭 업데이트
             const tabs = document.querySelectorAll('.service-tab');
             tabs.forEach((tab, i) => {
                 const title = tab.querySelector('.tab-title');
                 if (i === index) {
-                    tab.className = "service-tab active relative w-full md:flex-1 flex items-center justify-center space-x-3 md:space-x-2 px-5 py-3 md:py-3.5 md:px-6 rounded-xl md:rounded-full transition-all duration-300 bg-gradient-to-r from-[#624694] to-[#E57D3B] text-white shadow-md z-10 md:scale-105";
-                    title.className = "tab-title font-bold text-[13px] md:text-base";
+                    tab.className = "service-tab active relative flex-1 flex items-center justify-center space-x-2 py-3.5 px-6 rounded-full transition-all duration-300 bg-gradient-to-r from-[#624694] to-[#E57D3B] text-white shadow-md z-10 scale-105";
+                    title.className = "tab-title font-bold text-base";
                 } else {
-                    tab.className = "service-tab relative w-full md:flex-1 flex items-center justify-center space-x-3 md:space-x-2 px-5 py-3 md:py-3.5 md:px-6 rounded-xl md:rounded-full transition-all duration-300 text-white/70 hover:text-white hover:bg-white/10 whitespace-nowrap";
-                    title.className = "tab-title font-medium text-[13px] md:text-base";
+                    tab.className = "service-tab relative flex-1 flex items-center justify-center space-x-2 py-3.5 px-6 rounded-full transition-all duration-300 text-white/70 hover:text-white hover:bg-white/10 whitespace-nowrap";
+                    title.className = "tab-title font-medium text-base";
+                }
+            });
+
+            // 모바일 탭 업데이트
+            const tabsM = document.querySelectorAll('.service-tab-m');
+            tabsM.forEach((tab, i) => {
+                if (i === index) {
+                    tab.className = "service-tab-m active shrink-0 flex items-center space-x-2 px-4 py-2.5 rounded-full transition-all duration-300 bg-gradient-to-r from-[#624694] to-[#E57D3B] text-white whitespace-nowrap";
+                } else {
+                    tab.className = "service-tab-m shrink-0 flex items-center space-x-2 px-4 py-2.5 rounded-full transition-all duration-300 bg-white/10 text-white/70 whitespace-nowrap";
                 }
             });
 
@@ -420,20 +463,29 @@
             const displayTitle = document.getElementById('display-title');
             const displayDesc = document.getElementById('display-desc');
 
-            const isDesktop = window.innerWidth >= 768;
+            const displayImgM = document.getElementById('display-img-m');
+            const displayTitleM = document.getElementById('display-title-m');
+            const displayDescM = document.getElementById('display-desc-m');
+
             displayImg.style.opacity = '0.4'; 
-            displayImg.style.transform = isDesktop ? 'scale(1)' : 'scale(1)'; 
+            displayImg.style.transform = 'scale(1)'; 
             displayContent.style.opacity = '0';
             displayContent.style.transform = 'translateY(20px)';
+            displayImgM.style.opacity = '0.4';
             
             setTimeout(() => {
                 displayImg.src = servicesData[index].img;
                 displayTitle.innerHTML = servicesData[index].title;
                 displayDesc.innerHTML = servicesData[index].desc;
                 displayImg.style.opacity = '1'; 
-                displayImg.style.transform = isDesktop ? 'scale(1.05)' : 'scale(1)';
+                displayImg.style.transform = 'scale(1.05)';
                 displayContent.style.opacity = '1';
                 displayContent.style.transform = 'translateY(0)';
+
+                displayImgM.src = servicesData[index].img;
+                displayTitleM.innerHTML = servicesData[index].title;
+                displayDescM.innerHTML = servicesData[index].desc;
+                displayImgM.style.opacity = '1';
             }, 300);
         }
 
