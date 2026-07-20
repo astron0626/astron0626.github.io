@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sibiz.co.kr/sitemap.xml
