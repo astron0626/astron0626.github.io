@@ -110,6 +110,12 @@
 
         /* 보안: 스팸 봇 방지용 숨김 필드 */
         .hp-field { display: none !important; visibility: hidden !important; }
+
+        /* 지원사업 공고 리스트 커스텀 스크롤바 */
+        .announcement-scroll::-webkit-scrollbar { width: 6px; }
+        .announcement-scroll::-webkit-scrollbar-track { background: #f3f4f6; border-radius: 10px; }
+        .announcement-scroll::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #624694 0%, #E57D3B 100%); border-radius: 10px; }
+        .announcement-scroll { scrollbar-width: thin; scrollbar-color: #E57D3B #f3f4f6; }
     </style>
 </head>
 <body class="bg-white text-gray-900 overflow-x-hidden">
@@ -280,14 +286,25 @@
                     <span class="text-xs md:text-sm font-bold text-orange-600 tracking-widest uppercase">Live Updates</span>
                 </div>
                 <h2 class="text-3xl md:text-5xl font-black mb-4 md:mb-6 tracking-tight text-gray-900 leading-tight break-keep">실시간 지원사업 공고</h2>
-                <p class="text-gray-500 text-base md:text-xl font-medium break-keep">기업마당(bizinfo.go.kr) 공공데이터를 통해 최신 지원사업 공고를 실시간으로 안내합니다.</p>
+                <p class="text-gray-500 text-base md:text-xl font-medium break-keep">놓치기 쉬운 지원사업 공고, SIBSC가 실시간으로 챙겨드립니다.</p>
             </div>
 
-            <div id="announcementList" class="space-y-3 md:space-y-4" data-aos="fade-up" data-aos-delay="100">
+            <div id="announcementList" class="space-y-3 md:space-y-4 max-h-[640px] overflow-y-auto pr-2 announcement-scroll" data-aos="fade-up" data-aos-delay="100">
                 <div class="flex items-center justify-center py-16 text-gray-400">
                     <i class="fa-solid fa-spinner animate-spin mr-3"></i> 최신 공고를 불러오는 중입니다...
                 </div>
             </div>
+            <p class="text-right text-[11px] md:text-xs text-gray-400 mb-6">출처: 기업마당(bizinfo.go.kr) 공공데이터</p>
+
+            <a href="#contact" class="group flex flex-col sm:flex-row items-center justify-between gap-4 p-6 md:p-8 rounded-[1.5rem] md:rounded-[2rem] bg-gradient-to-r from-[#624694] to-[#E57D3B] shadow-xl" data-aos="fade-up">
+                <div class="text-center sm:text-left">
+                    <p class="text-white font-bold text-lg md:text-xl mb-1 break-keep">어떤 공고가 우리 회사에 맞는지 헷갈리시나요?</p>
+                    <p class="text-white/80 text-sm md:text-base break-keep">전문가가 무료로 맞춤 진단해드립니다.</p>
+                </div>
+                <span class="shrink-0 inline-flex items-center gap-2 bg-white text-gray-900 font-bold text-sm md:text-base px-6 py-3.5 rounded-full shadow-lg group-hover:scale-105 transition-transform duration-300 whitespace-nowrap">
+                    상담 신청 바로가기 <i class="fa-solid fa-arrow-right text-xs"></i>
+                </span>
+            </a>
         </div>
     </section>
 
@@ -557,20 +574,58 @@
 
         startAutoSlide();
 
-        // 3. 기업마당(bizinfo.go.kr) 공공데이터 - 최신 지원사업 공고
+        // 3. 기업마당(bizinfo.go.kr) 공공데이터 - 최신 지원사업 공고 (전라·충청 지역 필터)
         async function loadBizinfoAnnouncements() {
             const listEl = document.getElementById('announcementList');
             const serviceKey = 'a1bac23e3c79e42f604bf6651b48c481fe093e5dbb226240812ba0a492e8ac89';
-            const apiUrl = `https://apis.data.go.kr/1421000/bizinfo/pblancBsnsService?serviceKey=${serviceKey}&dataType=json&pageNo=1&numOfRows=6`;
+            // 지역 필터를 위해 넉넉하게 불러온 뒤 클라이언트에서 걸러냄
+            const apiUrl = `https://apis.data.go.kr/1421000/bizinfo/pblancBsnsService?serviceKey=${serviceKey}&dataType=json&pageNo=1&numOfRows=100`;
+
+            // 공고 제목 앞 [지역] 태그 기준 필터 - 전라/충청 광역 + 시/군 단위 + 전국단위 공고 포함
+            const regionKeywords = [
+                // 전국 공통
+                '전국',
+                // 전라북도 (광역 + 시/군)
+                '전북', '전라북도', '전북특별자치도',
+                '전주', '익산', '군산', '정읍', '남원', '김제', '완주', '진안', '무주', '장수', '임실', '순창', '고창', '부안',
+                // 전라남도 (광역 + 시/군)
+                '전남', '전라남도',
+                '목포', '여수', '순천', '나주', '광양', '담양', '곡성', '구례', '고흥', '보성', '화순', '장흥', '강진', '해남', '영암', '무안', '함평', '영광', '장성', '완도', '진도', '신안',
+                // 광주광역시
+                '광주',
+                // 충청북도 (광역 + 시/군)
+                '충북', '충청북도',
+                '청주', '충주', '제천', '보은', '옥천', '영동', '증평', '진천', '괴산', '음성', '단양',
+                // 충청남도 (광역 + 시/군)
+                '충남', '충청남도',
+                '천안', '공주', '보령', '아산', '서산', '논산', '계룡', '당진', '금산', '부여', '서천', '청양', '홍성', '예산', '태안',
+                // 대전·세종
+                '대전', '세종'
+            ];
+
+            function matchesRegion(title) {
+                const bracketMatch = title.match(/^\[([^\]]+)\]/);
+                if (!bracketMatch) return true; // 지역 태그 없는 공고는 전국 공통으로 간주해 포함
+                const tag = bracketMatch[1];
+                return regionKeywords.some(k => tag.includes(k));
+            }
 
             try {
                 const res = await fetch(apiUrl);
                 if (!res.ok) throw new Error('API 응답 오류');
                 const data = await res.json();
 
-                const items = data?.response?.body?.items?.item;
-                if (!items || items.length === 0) {
+                const allItems = data?.response?.body?.items?.item;
+                if (!allItems || allItems.length === 0) {
                     throw new Error('데이터 없음');
+                }
+
+                const items = allItems
+                    .filter(item => matchesRegion((item.pblancNm || '').replace(/<[^>]*>/g, '')))
+                    .slice(0, 20);
+
+                if (items.length === 0) {
+                    throw new Error('해당 지역 공고 없음');
                 }
 
                 listEl.innerHTML = items.map(item => {
