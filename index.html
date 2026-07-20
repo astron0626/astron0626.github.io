@@ -195,60 +195,61 @@
                 <p class="text-gray-500 text-base md:text-xl font-medium break-keep">SIBSC는 실무 중심의 고도화된 금융 및 기술 지원 서비스를 제공합니다.</p>
             </div>
             
-            <!-- 모바일: 카드형 레이아웃 (사진 위, 탭, 텍스트 순서로 분리) -->
-            <div class="md:hidden rounded-[1.5rem] overflow-hidden shadow-2xl bg-gradient-to-b from-[#2a2140] to-[#2e1b10]" data-aos="fade-up" data-aos-delay="100">
-                <div class="relative w-full aspect-[4/5]">
-                    <img id="display-img-m" src="images/s1-portrait.jpg" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-100">
-                </div>
+            <!-- 모바일: 사진 오버레이형 (텍스트는 상단 여백, 아이콘은 하단) -->
+            <div class="md:hidden relative rounded-[1.5rem] overflow-hidden shadow-2xl aspect-[3/4]" data-aos="fade-up" data-aos-delay="100">
+                <img id="display-img-m" src="images/s1-portrait.jpg?v=2" class="absolute inset-0 w-full h-full object-cover object-top transition-opacity duration-500 opacity-100">
+                <div class="absolute inset-x-0 top-0 h-2/5 bg-gradient-to-b from-black/55 to-transparent"></div>
+                <div class="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/60 to-transparent"></div>
 
-                <div class="flex justify-center gap-3 px-4 pt-4 pb-1">
-                    <button onclick="changeService(0)" class="service-tab-m active shrink-0 flex items-center justify-center w-12 h-12 rounded-full transition-all duration-300 bg-gradient-to-r from-[#624694] to-[#E57D3B] text-white shadow-md">
-                        <i class="fa-solid fa-industry text-base"></i>
-                    </button>
-                    <button onclick="changeService(1)" class="service-tab-m shrink-0 flex items-center justify-center w-12 h-12 rounded-full transition-all duration-300 bg-white/10 text-white/70">
-                        <i class="fa-solid fa-file-contract text-base"></i>
-                    </button>
-                    <button onclick="changeService(2)" class="service-tab-m shrink-0 flex items-center justify-center w-12 h-12 rounded-full transition-all duration-300 bg-white/10 text-white/70">
-                        <i class="fa-solid fa-microscope text-base"></i>
-                    </button>
-                    <button onclick="changeService(3)" class="service-tab-m shrink-0 flex items-center justify-center w-12 h-12 rounded-full transition-all duration-300 bg-white/10 text-white/70">
-                        <i class="fa-solid fa-file-invoice-dollar text-base"></i>
-                    </button>
-                </div>
-
-                <div class="px-5 pt-3 pb-6">
-                    <h3 id="display-title-m" class="text-xl font-bold text-white mb-2 break-keep">공장 및 시설 자금 지원</h3>
-                    <p id="display-desc-m" class="text-gray-300 text-sm leading-relaxed break-keep">
+                <div class="absolute top-0 inset-x-0 z-20 p-6">
+                    <h3 id="display-title-m" class="text-xl font-bold text-white mb-2 break-keep drop-shadow-lg">공장 및 시설 자금 지원</h3>
+                    <p id="display-desc-m" class="text-gray-100 text-sm leading-relaxed break-keep drop-shadow-md">
                         신축 공장 설립, 이전, 시설 도입을 위한 최적의 자금 로드맵을 제시하며,
-                        <span class="text-orange-400 font-semibold">금리 및 자부담 완화, 취득세 감면 혜택</span> 등을 통해 재무 부담을 최소화합니다.
+                        <span class="text-orange-300 font-semibold">금리 및 자부담 완화, 취득세 감면 혜택</span> 등을 통해 재무 부담을 최소화합니다.
                     </p>
+                </div>
+
+                <div class="absolute bottom-4 inset-x-0 z-20 flex justify-center gap-3">
+                    <button onclick="changeService(0)" class="service-tab-m active shrink-0 flex items-center justify-center w-11 h-11 rounded-full transition-all duration-300 bg-gradient-to-r from-[#624694] to-[#E57D3B] text-white shadow-md">
+                        <i class="fa-solid fa-industry text-sm"></i>
+                    </button>
+                    <button onclick="changeService(1)" class="service-tab-m shrink-0 flex items-center justify-center w-11 h-11 rounded-full transition-all duration-300 bg-black/40 backdrop-blur-md border border-white/20 text-white/80">
+                        <i class="fa-solid fa-file-contract text-sm"></i>
+                    </button>
+                    <button onclick="changeService(2)" class="service-tab-m shrink-0 flex items-center justify-center w-11 h-11 rounded-full transition-all duration-300 bg-black/40 backdrop-blur-md border border-white/20 text-white/80">
+                        <i class="fa-solid fa-microscope text-sm"></i>
+                    </button>
+                    <button onclick="changeService(3)" class="service-tab-m shrink-0 flex items-center justify-center w-11 h-11 rounded-full transition-all duration-300 bg-black/40 backdrop-blur-md border border-white/20 text-white/80">
+                        <i class="fa-solid fa-file-invoice-dollar text-sm"></i>
+                    </button>
                 </div>
             </div>
 
-            <!-- 데스크톱: 기존 오버레이형 레이아웃 -->
+
+            <!-- 데스크톱: 오버레이형 레이아웃 -->
             <div class="hidden md:block w-full md:h-[650px] relative rounded-[2rem] overflow-hidden group shadow-2xl" data-aos="fade-up" data-aos-delay="100">
-                <img id="display-img" src="images/s1.jpg" class="absolute inset-0 w-full h-full object-cover object-center transition-all duration-500 opacity-100 scale-105">
+                <img id="display-img" src="images/s1.jpg?v=2" class="absolute inset-0 w-full h-full object-cover object-center transition-all duration-500 opacity-100 scale-105">
                 
                 <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/20 to-black/90 transition-all duration-500"></div>
 
                 <div class="absolute top-8 left-0 right-0 z-20 flex justify-center px-4">
-                    <div class="w-full max-w-3xl flex flex-row bg-black/40 backdrop-blur-md border border-white/20 p-2 rounded-full shadow-2xl">
-                        <button onclick="changeService(0)" class="service-tab active relative flex-1 flex items-center justify-center space-x-2 py-3.5 px-6 rounded-full transition-all duration-300 bg-gradient-to-r from-[#624694] to-[#E57D3B] text-white shadow-md z-10 scale-105">
+                    <div class="max-w-4xl flex flex-row items-center justify-center gap-1 bg-black/40 backdrop-blur-md border border-white/20 p-2 rounded-full shadow-2xl">
+                        <button onclick="changeService(0)" class="service-tab active relative flex items-center justify-center space-x-2 py-3.5 px-6 rounded-full transition-all duration-300 bg-gradient-to-r from-[#624694] to-[#E57D3B] text-white shadow-md z-10 scale-105">
                             <i class="fa-solid fa-industry text-base"></i>
                             <span class="tab-title font-bold text-base whitespace-nowrap">공장 및 시설 자금</span>
                         </button>
                         
-                        <button onclick="changeService(1)" class="service-tab relative flex-1 flex items-center justify-center space-x-2 py-3.5 px-6 rounded-full transition-all duration-300 text-white/70 hover:text-white hover:bg-white/10 whitespace-nowrap">
+                        <button onclick="changeService(1)" class="service-tab relative flex items-center justify-center space-x-2 py-3.5 px-6 rounded-full transition-all duration-300 text-white/70 hover:text-white hover:bg-white/10 whitespace-nowrap">
                             <i class="fa-solid fa-file-contract text-base"></i>
                             <span class="tab-title font-medium text-base">정부 지원 사업</span>
                         </button>
 
-                        <button onclick="changeService(2)" class="service-tab relative flex-1 flex items-center justify-center space-x-2 py-3.5 px-6 rounded-full transition-all duration-300 text-white/70 hover:text-white hover:bg-white/10 whitespace-nowrap">
+                        <button onclick="changeService(2)" class="service-tab relative flex items-center justify-center space-x-2 py-3.5 px-6 rounded-full transition-all duration-300 text-white/70 hover:text-white hover:bg-white/10 whitespace-nowrap">
                             <i class="fa-solid fa-microscope text-base"></i>
                             <span class="tab-title font-medium text-base">R&D 및 기술 인증</span>
                         </button>
 
-                        <button onclick="changeService(3)" class="service-tab relative flex-1 flex items-center justify-center space-x-2 py-3.5 px-6 rounded-full transition-all duration-300 text-white/70 hover:text-white hover:bg-white/10 whitespace-nowrap">
+                        <button onclick="changeService(3)" class="service-tab relative flex items-center justify-center space-x-2 py-3.5 px-6 rounded-full transition-all duration-300 text-white/70 hover:text-white hover:bg-white/10 whitespace-nowrap">
                             <i class="fa-solid fa-file-invoice-dollar text-base"></i>
                             <span class="tab-title font-medium text-base">세금 감면</span>
                         </button>
@@ -408,26 +409,26 @@
             {
                 title: "공장 및 시설 자금 지원",
                 desc: "신축 공장 설립, 이전, 시설 도입을 위한 최적의 자금 로드맵을 제시하며,<br class='hidden md:block'><span class='text-orange-400 font-semibold'>금리 및 자부담 완화, 취득세 감면 혜택</span> 등을 통해 재무 부담을 최소화합니다.",
-                img: "images/s1.jpg",
-                imgMobile: "images/s1-portrait.jpg"
+                img: "images/s1.jpg?v=2",
+                imgMobile: "images/s1-portrait.jpg?v=2"
             },
             {
                 title: "정부 지원 사업 매칭",
                 desc: "무상환 정부 출연금 및 바우처 지원사업 선정을 돕고,<br class='hidden md:block'><span class='text-orange-400 font-semibold'>스마트팩토리 구축, 마케팅, 사업화 자금</span> 등 기업 맞춤형 자금 확보 전략을 수립합니다.",
-                img: "images/s2.jpg",
-                imgMobile: "images/s2-portrait.jpg"
+                img: "images/s2.jpg?v=2",
+                imgMobile: "images/s2-portrait.jpg?v=2"
             },
             {
                 title: "R&D 및 기술 인증",
                 desc: "기업의 기술 고도화를 위한 연구소 설립 및 기술 연구원 역량 강화를 전폭적으로 지원하며,<br class='hidden md:block'><span class='text-orange-400 font-semibold'>벤처, 메인비즈, 이노비즈, ISO</span> 등 핵심 인증 획득으로 기업 가치를 극대화합니다.",
-                img: "images/s3.jpg",
-                imgMobile: "images/s3-portrait.jpg"
+                img: "images/s3.jpg?v=2",
+                imgMobile: "images/s3-portrait.jpg?v=2"
             },
             {
                 title: "세금 감면 컨설팅",
                 desc: "재무제표만으로는 보이지 않는 절세 기회까지, 담당 전문 세무사가 직접 진단합니다.<br class='hidden md:block'><span class='text-orange-400 font-semibold'>세액공제, 준비금 활용, 각종 세금 감면 혜택</span>을 빠짐없이 설계하여 기업의 실질적인 재무 건전성을 높입니다.",
-                img: "images/s4.jpg",
-                imgMobile: "images/s4-portrait.jpg"
+                img: "images/s4.jpg?v=2",
+                imgMobile: "images/s4-portrait.jpg?v=2"
             }
         ];
 
@@ -453,11 +454,11 @@
             tabs.forEach((tab, i) => {
                 const title = tab.querySelector('.tab-title');
                 if (i === index) {
-                    tab.className = "service-tab active relative flex-1 flex items-center justify-center space-x-2 py-3.5 px-6 rounded-full transition-all duration-300 bg-gradient-to-r from-[#624694] to-[#E57D3B] text-white shadow-md z-10 scale-105";
-                    title.className = "tab-title font-bold text-base";
+                    tab.className = "service-tab active relative flex items-center justify-center space-x-2 py-3.5 px-6 rounded-full transition-all duration-300 bg-gradient-to-r from-[#624694] to-[#E57D3B] text-white shadow-md z-10 scale-105";
+                    title.className = "tab-title font-bold text-base whitespace-nowrap";
                 } else {
-                    tab.className = "service-tab relative flex-1 flex items-center justify-center space-x-2 py-3.5 px-6 rounded-full transition-all duration-300 text-white/70 hover:text-white hover:bg-white/10 whitespace-nowrap";
-                    title.className = "tab-title font-medium text-base";
+                    tab.className = "service-tab relative flex items-center justify-center space-x-2 py-3.5 px-6 rounded-full transition-all duration-300 text-white/70 hover:text-white hover:bg-white/10 whitespace-nowrap";
+                    title.className = "tab-title font-medium text-base whitespace-nowrap";
                 }
             });
 
@@ -465,9 +466,9 @@
             const tabsM = document.querySelectorAll('.service-tab-m');
             tabsM.forEach((tab, i) => {
                 if (i === index) {
-                    tab.className = "service-tab-m active shrink-0 flex items-center justify-center w-12 h-12 rounded-full transition-all duration-300 bg-gradient-to-r from-[#624694] to-[#E57D3B] text-white shadow-md";
+                    tab.className = "service-tab-m active shrink-0 flex items-center justify-center w-11 h-11 rounded-full transition-all duration-300 bg-gradient-to-r from-[#624694] to-[#E57D3B] text-white shadow-md";
                 } else {
-                    tab.className = "service-tab-m shrink-0 flex items-center justify-center w-12 h-12 rounded-full transition-all duration-300 bg-white/10 text-white/70";
+                    tab.className = "service-tab-m shrink-0 flex items-center justify-center w-11 h-11 rounded-full transition-all duration-300 bg-black/40 backdrop-blur-md border border-white/20 text-white/80";
                 }
             });
 
